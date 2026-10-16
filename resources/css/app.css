@@ -1,0 +1,350 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans:
+        Figtree, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--border, currentColor);
+    }
+}
+
+@layer utilities {
+    body,
+    html {
+        --font-sans:
+            'Figtree', ui-sans-serif, system-ui, sans-serif,
+            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+            'Noto Color Emoji';
+    }
+}
+
+:root {
+    --background: hsl(230 33% 97.5%);
+    --foreground: hsl(232 32% 17%);
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(232 32% 17%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(232 32% 17%);
+    --primary: hsl(240 100% 69%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(0 0% 92.1%);
+    --secondary-foreground: hsl(0 0% 9%);
+    --muted: hsl(230 25% 96%);
+    --muted-foreground: hsl(232 12% 46%);
+    --accent: hsl(240 100% 97%);
+    --accent-foreground: hsl(240 60% 45%);
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: hsl(230 20% 91%);
+    --input: hsl(230 18% 86%);
+    --ring: hsl(240 100% 69%);
+    --chart-1: hsl(12 76% 61%);
+    --chart-2: hsl(173 58% 39%);
+    --chart-3: hsl(197 37% 24%);
+    --chart-4: hsl(43 74% 66%);
+    --chart-5: hsl(27 87% 67%);
+    --radius: 0.5rem;
+    --sidebar-background: hsl(0 0% 98%);
+    --sidebar-foreground: hsl(240 5.3% 26.1%);
+    --sidebar-primary: hsl(0 0% 10%);
+    --sidebar-primary-foreground: hsl(0 0% 98%);
+    --sidebar-accent: hsl(0 0% 94%);
+    --sidebar-accent-foreground: hsl(0 0% 30%);
+    --sidebar-border: hsl(0 0% 91%);
+    --sidebar-ring: hsl(217.2 91.2% 59.8%);
+    --sidebar: hsl(0 0% 98%);
+}
+
+.dark {
+    --background: hsl(233 33% 14%);
+    --foreground: hsl(230 30% 94%);
+    --card: hsl(234 24% 19%);
+    --card-foreground: hsl(230 30% 94%);
+    --popover: hsl(234 24% 21%);
+    --popover-foreground: hsl(230 30% 94%);
+    --primary: hsl(240 100% 72%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(0 0% 14.9%);
+    --secondary-foreground: hsl(0 0% 98%);
+    --muted: hsl(234 22% 23%);
+    --muted-foreground: hsl(230 14% 68%);
+    --accent: hsl(240 40% 28%);
+    --accent-foreground: hsl(240 100% 88%);
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: hsl(234 20% 27%);
+    --input: hsl(234 20% 30%);
+    --ring: hsl(240 100% 72%);
+    --chart-1: hsl(220 70% 50%);
+    --chart-2: hsl(160 60% 45%);
+    --chart-3: hsl(30 80% 55%);
+    --chart-4: hsl(280 65% 60%);
+    --chart-5: hsl(340 75% 55%);
+    --sidebar-background: hsl(0 0% 7%);
+    --sidebar-foreground: hsl(0 0% 95.9%);
+    --sidebar-primary: hsl(360, 100%, 100%);
+    --sidebar-primary-foreground: hsl(0 0% 100%);
+    --sidebar-accent: hsl(0 0% 15.9%);
+    --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+    --sidebar-border: hsl(0 0% 15.9%);
+    --sidebar-ring: hsl(217.2 91.2% 59.8%);
+    --sidebar: hsl(240 5.9% 10%);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* ------------------------------------------------------------------
+   FlowForge design system
+   Brand + status palette (inspired by work-management SaaS UIs).
+------------------------------------------------------------------- */
+@theme {
+    --color-brand-50: #f0f0ff;
+    --color-brand-100: #e1e1ff;
+    --color-brand-200: #c5c5ff;
+    --color-brand-300: #a2a2ff;
+    --color-brand-400: #8181ff;
+    --color-brand-500: #6161ff;
+    --color-brand-600: #4b4bdb;
+    --color-brand-700: #3838b0;
+    --color-ok: #00c875;
+    --color-bad: #e2445c;
+    --color-run: #579bfc;
+    --color-wait: #fdab3d;
+    --color-part: #ffcb00;
+    --color-off: #9ca3af;
+    --color-cat-trigger: #ff7575;
+    --color-cat-logic: #fdab3d;
+    --color-cat-data: #579bfc;
+    --color-cat-notification: #00c875;
+    --color-cat-ai: #a25ddc;
+    --color-cat-utility: #7e8494;
+}
+
+@utility ff-card {
+    @apply rounded-2xl border border-border bg-card text-card-foreground shadow-[0_1px_2px_rgba(16,24,64,0.04),0_4px_16px_-8px_rgba(16,24,64,0.08)];
+}
+
+@utility ff-btn {
+    @apply inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-lg px-3.5 text-sm font-medium whitespace-nowrap transition-all duration-150 select-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:outline-none active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+}
+
+@utility ff-btn-primary {
+    @apply ff-btn bg-brand-500 text-white shadow-sm shadow-brand-500/30 hover:bg-brand-600;
+}
+
+@utility ff-btn-secondary {
+    @apply ff-btn border border-border bg-card text-foreground hover:bg-muted;
+}
+
+@utility ff-btn-ghost {
+    @apply ff-btn text-muted-foreground hover:bg-muted hover:text-foreground;
+}
+
+@utility ff-btn-danger {
+    @apply ff-btn bg-bad text-white hover:bg-bad/90;
+}
+
+@utility ff-btn-sm {
+    @apply h-8 px-2.5 text-xs;
+}
+
+@utility ff-icon-btn {
+    @apply inline-flex size-9 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:outline-none disabled:opacity-40;
+}
+
+@utility ff-input {
+    @apply h-9 w-full rounded-lg border border-input bg-card px-3 text-sm text-foreground transition-colors outline-none placeholder:text-muted-foreground/70 focus:border-brand-400 focus:ring-3 focus:ring-brand-500/15 disabled:opacity-60;
+}
+
+@utility ff-textarea {
+    @apply ff-input h-auto min-h-20 py-2 leading-relaxed;
+}
+
+@utility ff-label {
+    @apply mb-1.5 block text-xs font-semibold tracking-wide text-muted-foreground uppercase;
+}
+
+@utility ff-chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap;
+}
+
+@utility ff-skeleton {
+    @apply animate-pulse rounded-md bg-muted;
+}
+
+@utility ff-mono {
+    @apply font-mono text-[12px] leading-relaxed;
+}
+
+@layer components {
+    .ff-table {
+        @apply w-full text-left text-sm;
+    }
+    .ff-table th {
+        @apply border-b border-border px-4 py-2.5 text-xs font-semibold tracking-wide text-muted-foreground uppercase;
+    }
+    .ff-table td {
+        @apply border-b border-border/70 px-4 py-3 align-middle;
+    }
+}
+
+/* Vue Flow theming */
+.vue-flow__edge-path {
+    stroke: var(--muted-foreground);
+    stroke-width: 1.75;
+}
+.vue-flow__edge.selected .vue-flow__edge-path,
+.vue-flow__edge:hover .vue-flow__edge-path {
+    stroke: var(--color-brand-500);
+}
+.vue-flow__edge.animated .vue-flow__edge-path {
+    stroke: var(--color-run);
+}
+.vue-flow__edge-textbg {
+    fill: var(--card);
+}
+.vue-flow__edge-text {
+    fill: var(--muted-foreground);
+    font-size: 10px;
+    font-weight: 600;
+}
+.vue-flow__minimap {
+    background: var(--card) !important;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+.vue-flow__controls {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(16, 24, 64, 0.08);
+}
+.vue-flow__controls-button {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    color: var(--foreground);
+}
+.vue-flow__controls-button svg {
+    fill: currentColor;
+}
+.vue-flow__handle {
+    width: 11px;
+    height: 11px;
+    border: 2px solid var(--card);
+    background: var(--muted-foreground);
+    transition: transform 0.15s ease;
+}
+.vue-flow__handle:hover {
+    transform: scale(1.35);
+    background: var(--color-brand-500);
+}
+.vue-flow__connection-path {
+    stroke: var(--color-brand-500);
+    stroke-width: 2;
+    stroke-dasharray: 5;
+    animation: ff-dash 0.6s linear infinite;
+}
+@keyframes ff-dash {
+    to {
+        stroke-dashoffset: -10;
+    }
+}
+.ff-fade-enter-active,
+.ff-fade-leave-active {
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease;
+}
+.ff-fade-enter-from,
+.ff-fade-leave-to {
+    opacity: 0;
+    transform: translateY(4px);
+}
+.ff-slide-enter-active,
+.ff-slide-leave-active {
+    transition:
+        transform 0.22s ease,
+        opacity 0.22s ease;
+}
+.ff-slide-enter-from,
+.ff-slide-leave-to {
+    transform: translateX(16px);
+    opacity: 0;
+}
